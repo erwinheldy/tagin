@@ -38,4 +38,5 @@ function watchChanges() {
 }
 
 exports.watch = watchChanges
+exports.build = series(css, cssMin, js)
 exports.default = series(css, cssMin, js, watchChanges)
