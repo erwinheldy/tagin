@@ -1,0 +1,19 @@
+{
+  "name": "tagin",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/erwinheldy/tagin.git",
+  "author": "Erwin Heldy G <erwin.developer@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "bootstrap": "4.5.0"
+  },
+  "devDependencies": {
+    "gulp": "4.0.2",
+    "gulp-autoprefixer": "7.0.1",
+    "gulp-clean-css": "4.3.0",
+    "gulp-rename": "2.0.0",
+    "gulp-sass": "4.1.0",
+    "gulp-terser": "1.2.0"
+  }
+}

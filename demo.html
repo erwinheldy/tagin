@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@4.5.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="dist/css/tagin.min.css">
+  <title>Tagin</title>
+  <style>
+    .tagin-wrapper {
+      padding: 0;
+    }
+  </style>
+</head>
+<body class="bg-light">
+  <div class="container mt-5">
+    <div class="card mb-5 shadow border-0">
+      <div class="card-body">
+        <h5>Basic</h5>
+        <p class="text-muted font-size-sm">
+          Enter a comma-separated list of tags.
+        </p>
+        <input type="text" name="tags" class="form-control tagin" value="dark mode,favicon,media queries,svg,svg icons">
+      </div>
+    </div>
+
+    <div class="card mb-5 shadow border-0">
+      <div class="card-body">
+        <h5>Custom Separator</h5>
+        <p class="text-muted font-size-sm">
+          Set separator using <code>data-separator</code> attribute.<br>
+          Example tags using 'space' separator.
+        </p>
+        <input type="text" name="tags" class="form-control tagin" data-separator=" " value="autocomplete forms inputmode inputs ux">
+      </div>
+    </div>
+
+    <div class="card mb-5 shadow border-0">
+      <div class="card-body">
+        <h5>Duplicates</h5>
+        <p class="text-muted font-size-sm">
+          Add <code>data-duplicate="true"</code> to remove duplicates validation.
+        </p>
+        <input type="text" name="tags" class="form-control tagin" data-duplicate="true" value="html,html,css,css,js,js">
+      </div>
+    </div>
+
+    <div class="card mb-5 shadow border-0">
+      <div class="card-body">
+        <h5>Transform Tags</h5>
+        <p class="text-muted font-size-sm">
+          Sometimes we need to transform tags.<br>
+          Example transform using <code>toUpperCase</code>.
+        </p>
+        <input type="text" name="tags" class="form-control tagin" data-transform="input => input.toUpperCase()" value="HTML,CSS">
+      </div>
+    </div>
+  </div>
+
+  <script src="dist/js/tagin.min.js"></script>
+  <script>
+    for (const el of document.querySelectorAll('.tagin')) {
+      tagin(el)
+    }
+  </script>
+</body>
+</html>
