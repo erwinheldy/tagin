@@ -5,32 +5,32 @@
 .tagin {
   display: none;
 }
-.tagin.is-valid + .tagin-wrapper,
-.was-validated .tagin:valid + .tagin-wrapper {
-  border-color: $form-feedback-valid-color;
-}
-.tagin.is-invalid + .tagin-wrapper,
-.was-validated .tagin:invalid + .tagin-wrapper {
-  border-color: $form-feedback-invalid-color;
-}
 .tagin-wrapper {
+  display: flex;
+  flex-wrap: wrap;
   height: auto;
   padding: calc(#{$input-padding-y} - 2px) calc(#{$input-padding-x} - 2px);
   position: relative;
   overflow: hidden;
   cursor: text;
-  font-size: 0; // remove white-space
   &.focus { // copied from form-control-focus mixin
     color: $input-focus-color;
     background-color: $input-focus-bg;
     border-color: $input-focus-border-color;
     outline: 0;
-    // Avoid using mixin so we can pass custom focus shadow properly
     @if $enable-shadows {
       box-shadow: $input-box-shadow, $input-focus-box-shadow;
     } @else {
       box-shadow: $input-focus-box-shadow;
     }
+  }
+  .tagin.is-valid + &,
+  .was-validated .tagin:valid + & {
+    border-color: $form-feedback-valid-color;
+  }
+  .tagin.is-invalid + &,
+  .was-validated .tagin:invalid + & {
+    border-color: $form-feedback-invalid-color;
   }
 }
 .tagin-tag {
@@ -44,7 +44,6 @@
   margin: 2px;
   font-weight: 300;
   background-color: $secondary;
-  font-size: $font-size-base;
   transition: transform .1s;
 }
 .tagin-tag-remove {
@@ -63,12 +62,11 @@
   outline: 0;
   border-width: 1px 0;
   padding: 0 2px 0 0;
-  font-size: $font-size-base;
   height: 28px;
   color: $input-color;
   &:not(.tagin-input-hidden) {
-    width: 24px;
-    min-width: 24px;
+    width: 4px;
+    min-width: 4px;
   }
 }
 .tagin-input-hidden {
