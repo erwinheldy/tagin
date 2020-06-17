@@ -58,13 +58,13 @@ function tagin(el, option = {}) {
   // Adding tag
   input.addEventListener('input', () => {
     autowidth()
-    const value = input.value.replace(new RegExp(escapeRegex(separator), 'g'), '').trim()
+    const value = transform(input.value.replace(new RegExp(escapeRegex(separator), 'g'), '').trim())
     if (value === '') { input.value = '' }
     if (input.value.includes(separator)) {
       if (getTags().includes(value) && duplicate === 'false') {
         alertExist(value)
       } else {
-        input.insertAdjacentHTML('beforebegin', templateTag(transform(value)))
+        input.insertAdjacentHTML('beforebegin', templateTag(value))
         updateValue()
       }
       input.value = ''
