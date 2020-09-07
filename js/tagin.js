@@ -8,9 +8,11 @@ function tagin(el, option = {}) {
   const defaultSeparator = ','
   const defaultDuplicate = 'false'
   const defaultTransform = input => input
+  const defaultPlaceholder = ''
   const separator = el.dataset.separator || option.separator || defaultSeparator
   const duplicate = el.dataset.duplicate || option.duplicate || defaultDuplicate
   const transform = eval(el.dataset.transform) || option.transform || defaultTransform
+  const placeholder = el.dataset.placeholder || option.placeholder || defaultPlaceholder
 
   const templateTag = value => `<span class="${classTag}">${value}<span class="${classRemove}"></span></span>`
 
@@ -21,7 +23,7 @@ function tagin(el, option = {}) {
   ; (function () {
     const className = classWrapper + ' ' + el.className.replace(classElement, '').trim()
     const tags = getValue().trim() === '' ? '' : getValues().map(templateTag).join('')
-    const template = `<div class="${className}">${tags}<input type="text" class="${classInput}"></div>`
+    const template = `<div class="${className}">${tags}<input type="text" class="${classInput}" placeholder="${placeholder}"></div>`
     el.insertAdjacentHTML('afterend', template) // insert template after element
   })()
 
@@ -57,7 +59,6 @@ function tagin(el, option = {}) {
 
   // Adding tag
   input.addEventListener('input', () => {
-    autowidth()
     const value = transform(input.value.replace(new RegExp(escapeRegex(separator), 'g'), '').trim())
     if (value === '') { input.value = '' }
     if (input.value.includes(separator)) {
@@ -70,12 +71,15 @@ function tagin(el, option = {}) {
       input.value = ''
       input.removeAttribute('style')
     }
+    autowidth()
   })
+  autowidth()
 
   function autowidth() {
     const fakeEl = document.createElement('div')
     fakeEl.classList.add(classInput, classInputHidden)
-    fakeEl.innerHTML = input.value.replace(/ /g, '&nbsp;')
+    const string = input.value || input.getAttribute('placeholder') || ''
+    fakeEl.innerHTML = string.replace(/ /g, '&nbsp;')
     document.body.appendChild(fakeEl)
     input.style.setProperty('width', Math.ceil(window.getComputedStyle(fakeEl).width.replace('px', '')) + 1 + 'px')
     fakeEl.remove()
