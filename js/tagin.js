@@ -59,18 +59,11 @@ function tagin(el, option = {}) {
 
   // Adding tag
   input.addEventListener('input', () => {
-    const value = transform(input.value.replace(new RegExp(escapeRegex(separator), 'g'), '').trim())
-    if (value === '') { input.value = '' }
-    if (input.value.includes(separator)) {
-      if (getTags().includes(value) && duplicate === 'false') {
-        alertExist(value)
-      } else {
-        input.insertAdjacentHTML('beforebegin', templateTag(value))
-        updateValue()
-      }
-      input.value = ''
-      input.removeAttribute('style')
-    }
+    addTag()
+    autowidth()
+  })
+  input.addEventListener('blur', () => {
+    addTag(true)
     autowidth()
   })
   autowidth()
@@ -83,6 +76,20 @@ function tagin(el, option = {}) {
     document.body.appendChild(fakeEl)
     input.style.setProperty('width', Math.ceil(window.getComputedStyle(fakeEl).width.replace('px', '')) + 1 + 'px')
     fakeEl.remove()
+  }
+  function addTag(force = false) {
+    const value = transform(input.value.replace(new RegExp(escapeRegex(separator), 'g'), '').trim())
+    if (value === '') { input.value = '' }
+    if (input.value.includes(separator) || (force && input.value != '')) {
+      if (getTags().includes(value) && duplicate === 'false') {
+        alertExist(value)
+      } else {
+        input.insertAdjacentHTML('beforebegin', templateTag(value))
+        updateValue()
+      }
+      input.value = ''
+      input.removeAttribute('style')
+    }
   }
   function alertExist(value) {
     for (const el of wrapper.getElementsByClassName(classTag)) {
