@@ -78,15 +78,17 @@ function tagin(el, option = {}) {
     fakeEl.remove()
   }
   function addTag(force = false) {
-    const value = transform(input.value.replace(new RegExp(escapeRegex(separator), 'g'), '').trim())
+    const value = transform(input.value.trim())
     if (value === '') { input.value = '' }
     if (input.value.includes(separator) || (force && input.value != '')) {
-      if (getTags().includes(value) && duplicate === 'false') {
-        alertExist(value)
-      } else {
-        input.insertAdjacentHTML('beforebegin', templateTag(value))
-        updateValue()
-      }
+      value.split(separator).filter(i => i != '').forEach(val => {
+        if (getTags().includes(val) && duplicate === 'false') {
+          alertExist(val)
+        } else {
+          input.insertAdjacentHTML('beforebegin', templateTag(val))
+          updateValue()
+        }
+      })
       input.value = ''
       input.removeAttribute('style')
     }

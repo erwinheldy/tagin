@@ -13,16 +13,16 @@
 }
 
 .tagin-wrapper.focus {
-  color: #495057;
+  color: #212529;
   background-color: #fff;
-  border-color: #80bdff;
+  border-color: #86b7fe;
   outline: 0;
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
+  box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
 }
 
 .tagin.is-valid + .tagin-wrapper,
 .was-validated .tagin:valid + .tagin-wrapper {
-  border-color: #28a745;
+  border-color: #198754;
 }
 
 .tagin.is-invalid + .tagin-wrapper,
@@ -63,7 +63,7 @@
   border-width: 1px 0;
   padding: 0 2px 0 0;
   height: 28px;
-  color: #495057;
+  color: #212529;
 }
 
 .tagin-input:not(.tagin-input-hidden) {
