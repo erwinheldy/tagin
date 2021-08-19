@@ -112,3 +112,5 @@ function tagin(el, option = {}) {
   }
   el.addEventListener('change', () => updateTag())
 }
+
+module.exports = tagin
