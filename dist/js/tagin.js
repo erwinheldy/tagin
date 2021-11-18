@@ -7,10 +7,12 @@ function tagin(el, option = {}) {
   const classInputHidden = 'tagin-input-hidden'
   const defaultSeparator = ','
   const defaultDuplicate = 'false'
+  const defaultEnter = 'false'
   const defaultTransform = input => input
   const defaultPlaceholder = ''
   const separator = el.dataset.separator || option.separator || defaultSeparator
   const duplicate = el.dataset.duplicate || option.duplicate || defaultDuplicate
+  const enter = el.dataset.enter || option.enter || defaultEnter
   const transform = eval(el.dataset.transform) || option.transform || defaultTransform
   const placeholder = el.dataset.placeholder || option.placeholder || defaultPlaceholder
 
@@ -54,6 +56,11 @@ function tagin(el, option = {}) {
     if (input.value === '' && e.keyCode === 8 && wrapper.getElementsByClassName(classTag).length) {
       wrapper.querySelector('.' + classTag + ':last-of-type').remove()
       updateValue()
+    }
+    if (input.value !== '' && e.keyCode === 13 && enter === 'true') {
+      addTag(true)
+      autowidth()
+      e.preventDefault()
     }
   })
 
@@ -107,8 +114,9 @@ function tagin(el, option = {}) {
       getValue().trim() !== '' && input.insertAdjacentHTML('beforebegin', getValues().map(templateTag).join(''))
     }
   }
-  function escapeRegex(value) {
-    return value.replace(/[\-\[\]{}()*+?.,\\\^$|#\s]/g, '\\$&')
-  }
   el.addEventListener('change', () => updateTag())
+}
+
+if (typeof exports === 'object' && typeof module !== 'undefined') {
+  module.exports = tagin
 }
