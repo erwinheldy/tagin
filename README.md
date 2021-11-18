@@ -1,78 +1,56 @@
 # Tagin
+
 Simple tag input for Bootstrap. Support bootstrap v4 and v5.
 
 Demo: [https://tagin.netlify.app/](https://tagin.netlify.app/)
 
-#### Features
-* Custom separator
-* Enable / disable duplicates
-* Custom transform
-* Fast
-* Small
-* No depedencies
+## Features
 
-## Installations
+- Custom separator
+- Enable / disable duplicates
+- Custom transform
+- Support bootstrap validation style
+- Fast
+- Small
+- No depedencies
 
-### CSS CDN RawGithack
-**Development Version**
-  - Unminified version:
-    ```
-    https://raw.githack.com/darkterminal/tagin/master/dist/css/tagin.css
-    ```
-  - Minified version:
-    ```
-    https://raw.githack.com/darkterminal/tagin/master/dist/css/tagin.min.css
-    ```
-**Production Version**
-  - Unminified version:
-    ```
-    https://rawcdn.githack.com/darkterminal/tagin/6fa2863c13aa1841f33cf6dcbbf266c92fbf5412/dist/css/tagin.css
-    ```
-  - Minified version (Recomended):
-    ```
-    https://rawcdn.githack.com/darkterminal/tagin/6fa2863c13aa1841f33cf6dcbbf266c92fbf5412/dist/css/tagin.min.css
-    ```
 
-### JS CDN RawGithack
-**Development Version**
-  - Unminified version:
-    ```
-    https://raw.githack.com/darkterminal/tagin/master/dist/js/tagin.js
-    ```
-  - Minified version:
-    ```
-    https://raw.githack.com/darkterminal/tagin/master/dist/js/tagin.min.js
-    ```
-**Production Version**
-  - Unminified version:
-    ```
-    https://rawcdn.githack.com/darkterminal/tagin/6fa2863c13aa1841f33cf6dcbbf266c92fbf5412/dist/js/tagin.js
-    ```
-  - Minified version (Recomended):
-    ```
-    https://rawcdn.githack.com/darkterminal/tagin/6fa2863c13aa1841f33cf6dcbbf266c92fbf5412/dist/js/tagin.min.js
-    ```
+## Installation
 
-### Usage
+Install tagin with npm
+```bash
+npm install tagin
+```
+
+Install from cdn
+```html
+<link rel="stylesheet" href="https://unpkg.com/tagin/dist/css/tagin.min.css">
+<script src="https://unpkg.com/tagin/dist/js/tagin.min.js"></script>
+```
+
+## Usage/Examples
 
 Place `css` between `<head></head>` tag
 ```html
-<link rel="stylesheet" href="https://rawcdn.githack.com/darkterminal/tagin/6fa2863c13aa1841f33cf6dcbbf266c92fbf5412/dist/css/tagin.min.css">
+<head>
+    <link rel="stylesheet" href="https://unpkg.com/tagin/dist/css/tagin.min.css">
+</head>
 ```
 
 Place `js` before `</body>` tag
 ```html
-<script src="https://rawcdn.githack.com/darkterminal/tagin/6fa2863c13aa1841f33cf6dcbbf266c92fbf5412/dist/js/tagin.min.js"></script>
+<body>
+    ...
+    <script src="https://unpkg.com/tagin/dist/js/tagin.min.js"></script>
+</body>
 ```
 
-### Options
-
-#### 1. Basic Usage (No `data-Options` attribute needed)
+#### 1. Basic Usage (No `data-options` attribute needed)
 ```html
-<input type="text" name="tags" class="form-control tagin" value="dark mode,favicon,media queries,svg,svg icons">
+<input type="text" name="tags" class="form-control tagin" value="red,green,blue">
 
 <script>
-  tagin( document.querySelector('.tagin') );
+  tagin(document.querySelector('.tagin'))
 </script>
 ```
 
@@ -82,17 +60,17 @@ Set placeholder using `data-placeholder` attribute.
 <input type="text" name="tags" class="form-control tagin" value="red,green,blue" data-placeholder="Add a color... (then press comma)">
 
 <script>
-  tagin( document.querySelector('.tagin') );
+  tagin(document.querySelector('.tagin'))
 </script>
 ```
 
 #### 3. Using Custom Separator
 Set separator using `data-separator` attribute. Example tags using 'space' separator.
 ```html
-<input type="text" name="tags" class="form-control tagin" data-separator=" " value="autocomplete forms inputmode inputs ux">
+<input type="text" name="tags" class="form-control tagin" data-separator=" " value="red green blue">
 
 <script>
-  tagin( document.querySelector('.tagin') );
+  tagin(document.querySelector('.tagin'))
 </script>
 ```
 
@@ -102,17 +80,27 @@ Add `data-duplicate="true"` to remove duplicates validation.
 <input type="text" name="tags" class="form-control tagin" data-duplicate="true" value="html,html,css,css,js,js">
 
 <script>
-  tagin( document.querySelector('.tagin') );
+  tagin(document.querySelector('.tagin'))
 </script>
 ```
 
-#### 5. Using Transform Rules
+#### 5. Transform Tags
 Sometimes we need to transform tags.
 Example transform using `toUpperCase`.
 ```html
 <input type="text" name="tags" class="form-control tagin" data-transform="input => input.toUpperCase()" value="HTML,CSS">
 
 <script>
-  tagin( document.querySelector('.tagin') );
+  tagin(document.querySelector('.tagin'))
+</script>
+```
+
+#### 6. Force add on enter
+Add `data-enter="true"` to force add tag when enter key is pressed.
+```html
+<input type="text" name="tags" class="form-control tagin" data-enter="true" value="red,green,blue" data-placeholder="Add a color... (then press comma or enter)">
+
+<script>
+  tagin(document.querySelector('.tagin'))
 </script>
 ```
