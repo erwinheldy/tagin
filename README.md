@@ -15,40 +15,40 @@ Demo: [https://tagin.netlify.app/](https://tagin.netlify.app/)
 
 ### CSS CDN RawGithack
 **Development Version**
-  - Unminified version: 
+  - Unminified version:
     ```
     https://raw.githack.com/darkterminal/tagin/master/dist/css/tagin.css
     ```
-  - Minified version: 
+  - Minified version:
     ```
     https://raw.githack.com/darkterminal/tagin/master/dist/css/tagin.min.css
     ```
 **Production Version**
-  - Unminified version: 
+  - Unminified version:
     ```
     https://rawcdn.githack.com/darkterminal/tagin/6fa2863c13aa1841f33cf6dcbbf266c92fbf5412/dist/css/tagin.css
     ```
-  - Minified version (Recomended): 
+  - Minified version (Recomended):
     ```
     https://rawcdn.githack.com/darkterminal/tagin/6fa2863c13aa1841f33cf6dcbbf266c92fbf5412/dist/css/tagin.min.css
     ```
-  
+
 ### JS CDN RawGithack
 **Development Version**
-  - Unminified version: 
+  - Unminified version:
     ```
     https://raw.githack.com/darkterminal/tagin/master/dist/js/tagin.js
     ```
-  - Minified version: 
+  - Minified version:
     ```
     https://raw.githack.com/darkterminal/tagin/master/dist/js/tagin.min.js
     ```
 **Production Version**
-  - Unminified version: 
+  - Unminified version:
     ```
     https://rawcdn.githack.com/darkterminal/tagin/6fa2863c13aa1841f33cf6dcbbf266c92fbf5412/dist/js/tagin.js
     ```
-  - Minified version (Recomended): 
+  - Minified version (Recomended):
     ```
     https://rawcdn.githack.com/darkterminal/tagin/6fa2863c13aa1841f33cf6dcbbf266c92fbf5412/dist/js/tagin.min.js
     ```
@@ -96,7 +96,7 @@ Set separator using `data-separator` attribute. Example tags using 'space' separ
 </script>
 ```
 
-#### 4. Allow Diplicates
+#### 4. Allow Duplicates
 Add `data-duplicate="true"` to remove duplicates validation.
 ```html
 <input type="text" name="tags" class="form-control tagin" data-duplicate="true" value="html,html,css,css,js,js">
