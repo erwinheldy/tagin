@@ -3,70 +3,115 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.0.1/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/tagin.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.1.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="css/tagin.css">
   <title>Tagin</title>
 </head>
 <body class="bg-light">
-  <div class="container mt-5">
-    <div class="card mb-5 shadow border-0">
-      <div class="card-body">
-        <h5>Basic</h5>
-        <p class="text-muted font-size-sm">
-          Enter a comma-separated list of tags.
-        </p>
-        <input type="text" name="tags" class="form-control tagin" value="dark mode,favicon,media queries,svg,svg icons">
+  <div class="container my-5" style="max-width: calc(720px + 1rem)">
+    <div class="card card-body border-0 shadow p-4">
+      <div class="d-flex align-items-center gap-1">
+        <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="#0d6efd">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
+        </svg>
+        <h1>Tagin</h1>
+        <small>v1.4.0</small>
       </div>
-    </div>
+      <p class="text-secondary">Simple tag input for Bootstrap</p>
+      <p class="mb-5">
+        <a href="https://github.com/erwinheldy/tagin" target="_blank" class="link-secondary text-decoration-none d-flex align-items-center gap-1">
+          <svg viewBox="0 0 24 24" width="21" height="21" stroke="currentColor" stroke-width="2" fill="none" stroke-linecap="round" stroke-linejoin="round" class="css-i6dzq1"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
+          Github
+        </a>
+      </p>
+      <div style="max-width: 720px" class="d-flex flex-column gap-5">
+        <div>
+          <h5>Basic</h5>
+          <p class="text-muted">
+            Enter a comma-separated list of tags.
+          </p>
+          <input type="text" name="tags" class="form-control tagin" value="red,green,blue">
+        </div>
 
-    <div class="card mb-5 shadow border-0">
-      <div class="card-body">
-        <h5>Placeholder</h5>
-        <p class="text-muted font-size-sm">
-          Set placeholder using <code>data-placeholder</code> attribute.<br>
-        </p>
-        <input type="text" name="tags" class="form-control tagin" value="red,green,blue" data-placeholder="Add a color... (then press comma)">
-      </div>
-    </div>
+        <div>
+          <h5>Placeholder</h5>
+          <p class="text-muted">
+            Set placeholder using <code>data-placeholder</code> attribute.<br>
+          </p>
+          <input type="text" name="tags" class="form-control tagin" value="red,green,blue" data-placeholder="Add a color... (then press comma)">
+        </div>
 
-    <div class="card mb-5 shadow border-0">
-      <div class="card-body">
-        <h5>Custom Separator</h5>
-        <p class="text-muted font-size-sm">
-          Set separator using <code>data-separator</code> attribute.<br>
-          Example tags using 'space' separator.
-        </p>
-        <input type="text" name="tags" class="form-control tagin" data-separator=" " value="autocomplete forms inputmode inputs ux">
-      </div>
-    </div>
+        <div>
+          <h5>Custom Separator</h5>
+          <p class="text-muted">
+            Set separator using <code>data-separator</code> attribute.<br>
+            Example tags using 'space' separator.
+          </p>
+          <input type="text" name="tags" class="form-control tagin" data-separator=" " value="red green blue">
+        </div>
 
-    <div class="card mb-5 shadow border-0">
-      <div class="card-body">
-        <h5>Duplicates</h5>
-        <p class="text-muted font-size-sm">
-          Add <code>data-duplicate="true"</code> to remove duplicates validation.
-        </p>
-        <input type="text" name="tags" class="form-control tagin" data-duplicate="true" value="html,html,css,css,js,js">
-      </div>
-    </div>
+        <div>
+          <h5>Duplicates</h5>
+          <p class="text-muted">
+            Add <code>data-duplicate="true"</code> to remove duplicates validation.
+          </p>
+          <input type="text" name="tags" class="form-control tagin" data-duplicate="true" value="html,html,css,css,js,js">
+        </div>
 
-    <div class="card mb-5 shadow border-0">
-      <div class="card-body">
-        <h5>Transform Tags</h5>
-        <p class="text-muted font-size-sm">
-          Sometimes we need to transform tags.<br>
-          Example transform using <code>toUpperCase</code>.
-        </p>
-        <input type="text" name="tags" class="form-control tagin" data-transform="input => input.toUpperCase()" value="HTML,CSS">
+        <div>
+          <h5>Transform Tags</h5>
+          <p class="text-muted">
+            Sometimes we need to transform tags.<br>
+            Example transform using <code>toUpperCase</code>.
+          </p>
+          <input type="text" name="tags" class="form-control tagin" data-transform="input => input.toUpperCase()" value="HTML,CSS">
+        </div>
+
+        <div>
+          <h5>Force add on enter</h5>
+          <p class="text-muted">
+            Add <code>data-enter="true"</code> to force add tag when enter key is pressed.
+          </p>
+          <div class="vstack gap-2">
+            <input type="text" name="tags" class="form-control tagin" data-enter="true" value="red,green,blue" data-placeholder="Add a color... (then press comma or enter)">
+            <input type="text" name="tags" class="form-control tagin" data-enter="true" value="red green blue" data-placeholder="Add a color... (then press space or enter)" data-separator=" ">
+          </div>
+        </div>
+
+        <div>
+          <h5>Validation</h5>
+          <p class="text-muted">
+            Supports bootstrap custom validation styles.
+          </p>
+          <form class="needs-validation" novalidate>
+            <input type="text" name="tags" class="form-control tagin" required>
+            <div class="invalid-feedback">Example invalid feedback text</div>
+            <button class="btn btn-primary mt-3" type="submit">Submit</button>
+          </form>
+        </div>
       </div>
     </div>
   </div>
 
-  <script src="js/tagin.min.js"></script>
+  <script src="js/tagin.js"></script>
   <script>
     for (const el of document.querySelectorAll('.tagin')) {
       tagin(el)
     }
+
+    // Example starter JavaScript for disabling form submissions if there are invalid fields
+    void (function() {
+      document.querySelectorAll('.needs-validation').forEach(form => {
+        form.addEventListener('submit', event => {
+          if (!form.checkValidity()) {
+            event.preventDefault()
+            event.stopPropagation()
+          }
+
+          form.classList.add('was-validated')
+        })
+      })
+    })()
   </script>
 </body>
 </html>
