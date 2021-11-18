@@ -13,7 +13,7 @@
   position: relative;
   overflow: hidden;
   cursor: text;
-  &.focus { // copied from form-control-focus mixin
+  &.focus { // copied from form-control:focus
     color: $input-focus-color;
     background-color: $input-focus-bg;
     border-color: $input-focus-border-color;
@@ -27,10 +27,16 @@
   .tagin.is-valid + &,
   .was-validated .tagin:valid + & {
     border-color: $form-feedback-valid-color;
+    &.focus {
+      box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($form-feedback-valid-color, $input-btn-focus-color-opacity);
+    }
   }
   .tagin.is-invalid + &,
   .was-validated .tagin:invalid + & {
     border-color: $form-feedback-invalid-color;
+    &.focus {
+      box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($form-feedback-invalid-color, $input-btn-focus-color-opacity);
+    }
   }
 }
 .tagin-tag {
