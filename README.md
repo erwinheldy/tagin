@@ -9,10 +9,10 @@ Demo: [https://tagin.netlify.app/](https://tagin.netlify.app/)
 - Custom separators
 - Enable/disable duplicates
 - Custom transform
-- Supports bootstrap validation style
+- Supports Bootstrap validation style
 - Fast
 - Small
-- No depedencies
+- No dependencies
 
 
 ## Installation
@@ -30,7 +30,7 @@ Install from cdn:
 
 ## Usage/Examples
 
-Place `css` between `<head></head>` tag:
+Place `css` between `<head></head>` tags:
 ```html
 <head>
     <link rel="stylesheet" href="https://unpkg.com/tagin/dist/css/tagin.min.css">
@@ -49,7 +49,7 @@ In your script file, import Tagin (Change location according to your path):
 import Tagin from "./tagin.js";
 ```
 
-#### 1. Basic Usage (No `data-options` attribute needed)
+#### 1. Basic Usage (No `data-options` attribute needed):
 ```html
 <input type="text" name="tags" class="form-control tagin" value="red,green,blue">
 ```
@@ -68,13 +68,13 @@ tagin.getTags(); // Return tags as array ["red", "green", "blue", "yellow"]
 ```
 
 #### 2. Using Placeholder
-Set placeholder using `data-placeholder` attribute.
+Using `data-placeholder` attribute:
 ```html
 <input type="text" name="tags" class="form-control tagin" value="red,green,blue" data-placeholder="Add a color... (then press comma)">
-
-<script>
-  tagin(document.querySelector('.tagin'))
-</script>
+```
+Or using module option:
+```js
+tagin = new Tagin(document.querySelector(".tagin"), {placeholder: "Add a color... (then press comma)"});
 ```
 
 #### 3. Using Custom Separator
