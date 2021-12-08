@@ -1,0 +1,18 @@
+<input type="text" name="tags" class="form-control tagin" value="red,green,blue">
+
+<button class="btn btn-secondary btn-sm" id="add1" type="button">Add yellow</button>
+<button class="btn btn-secondary btn-sm" id="add2" type="button">Add cyan & black</button>
+
+<script>
+	const tagin = new Tagin(document.querySelector('.tagin'))
+
+	document.getElementById('add1').addEventListener('click', function () {
+		tagin.addTag('yellow')
+		this.remove()
+	})
+
+	document.getElementById('add2').addEventListener('click', function () {
+		tagin.addTag(['cyan', 'black'])
+		this.remove()
+	})
+</script>

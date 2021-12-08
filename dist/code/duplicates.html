@@ -1,0 +1,9 @@
+<!-- Add data-tagin-duplicate to remove duplicates validation. -->
+<input type="text" name="tags" class="form-control tagin" data-tagin-duplicate value="html,html,css,css,js,js">
+
+<!-- Or using option: -->
+<script>
+	const tagin = new Tagin(document.querySelector('.tagin'), {
+		duplicate: true
+	})
+</script>

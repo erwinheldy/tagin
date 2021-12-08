@@ -1,0 +1,9 @@
+dist/code
+dist/index.html
+.editorconfig
+.gitignore
+.npmignore
+.prettierrc
+rollup.config.js
+tsconfig.json
+pnpm-lock.yaml

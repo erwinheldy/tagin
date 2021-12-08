@@ -1,0 +1,11 @@
+{
+	"include": ["src"],
+  "exclude": ["dist", "node_modules"],
+  "compilerOptions": {
+		"target": "ESNext",
+    "outDir": "dist",
+    "declaration": true,
+    "declarationDir": ".",
+		"emitDeclarationOnly": true
+  }
+}

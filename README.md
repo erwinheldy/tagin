@@ -24,8 +24,8 @@ npm install tagin
 
 Install from cdn:
 ```html
-<link rel="stylesheet" href="https://unpkg.com/tagin/dist/css/tagin.min.css">
-<script src="https://unpkg.com/tagin/dist/js/tagin.min.js" type="module"></script>
+<link rel="stylesheet" href="https://unpkg.com/tagin@2.0.0/dist/tagin.min.css">
+<script src="https://unpkg.com/tagin@2.0.0/dist/tagin.min.js"></script>
 ```
 
 ## Usage/Examples
@@ -33,7 +33,7 @@ Install from cdn:
 Place `css` between `<head></head>` tags:
 ```html
 <head>
-    <link rel="stylesheet" href="https://unpkg.com/tagin/dist/css/tagin.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/tagin@2.0.0/dist/tagin.min.css">
 </head>
 ```
 
@@ -41,12 +41,22 @@ Place `js` before `</body>` tag:
 ```html
 <body>
     ...
-    <script src="https://unpkg.com/tagin/dist/js/tagin.min.js" type="module"></script>
+    <script src="https://unpkg.com/tagin@2.0.0/dist/tagin.min.js"></script>
 </body>
 ```
-In your script file, import Tagin (Change location according to your path):
+* You can also use tagin as javascript module:
+```html
+<script src="yourscript.js" type="module"></script>
+```
+In `yourscript.js` file, import Tagin (Change location according to your path):
 ```js
-import Tagin from "./tagin.js";
+import Tagin from './path/to/tagin.module.js'
+```
+Or you can use it directly in the html script as a module:
+```html
+<script type="module">
+	import Tagin from './path/to/tagin.module.js'
+</script>
 ```
 
 #### 1. Basic Usage (No `data-options` attribute needed):
@@ -54,68 +64,80 @@ import Tagin from "./tagin.js";
 <input type="text" name="tags" class="form-control tagin" value="red,green,blue">
 ```
 ```js
-var options = {
+const options = {
     separator: ',', // default: ','
     duplicate: false, // default: false
     enter: true, // default: false
-    transform: input => input.toUpperCase(), // default: input => input
+    transform: 'input => input.toUpperCase()', // default: input => input
     placeholder: 'Add a group...' // default: ''
-};
-tagin = new Tagin(document.querySelector(".tagin"), options);
+}
+const tagin = new Tagin(document.querySelector('.tagin'), options)
 
-tagin.addTag(true, "yellow"); // Add tag "yellow"
-tagin.getTags(); // Return tags as array ["red", "green", "blue", "yellow"]
+tagin.addTag('yellow') // Add tag 'yellow'
+tagin.addTag(['cyan', 'black']) // Add tags 'cyan' and 'black'
+tagin.getTag() // Return tags as string red,green,blue,yellow,cyan,black
+tagin.getTags() // Return tags as array ['red', 'green', 'blue', 'yellow', 'cyan', 'black']
 ```
 
 #### 2. Using Placeholder
-Using `data-placeholder` attribute:
+Using `data-tagin-placeholder` attribute:
 ```html
-<input type="text" name="tags" class="form-control tagin" value="red,green,blue" data-placeholder="Add a color... (then press comma)">
+<input type="text" name="tags" class="form-control tagin" value="red,green,blue" data-tagin-placeholder="Add a color... (then press comma)">
 ```
-Or using module option:
+Or using option:
 ```js
-tagin = new Tagin(document.querySelector(".tagin"), {placeholder: "Add a color... (then press comma)"});
+const tagin = new Tagin(document.querySelector('.tagin'), {
+  placeholder: 'Add a color... (then press comma)'
+})
 ```
 
 #### 3. Using Custom Separator
 Example tags with 'space' separator.
-Using `data-separator` attribute:
+Using `data-tagin-separator` attribute:
 ```html
-<input type="text" name="tags" class="form-control tagin" data-separator=" " value="red green blue">
+<input type="text" name="tags" class="form-control tagin" data-tagin-separator=" " value="red green blue">
 ```
-Or using module option:
+Or using option:
 ```js
-tagin = new Tagin(document.querySelector(".tagin"), {separator: " "});
+const tagin = new Tagin(document.querySelector('.tagin'), {
+	separator: ' '
+})
 ```
 
 #### 4. Allow Duplicates
-Add `data-duplicate="true"` to remove duplicates validation.
+Add `data-tagin-duplicate` to remove duplicates validation.
 ```html
-<input type="text" name="tags" class="form-control tagin" data-duplicate="true" value="html,html,css,css,js,js">
+<input type="text" name="tags" class="form-control tagin" data-tagin-duplicate value="html,html,css,css,js,js">
 ```
-Or using module option:
+Or using option:
 ```js
-tagin = new Tagin(document.querySelector(".tagin"), {duplicate: true});
+const tagin = new Tagin(document.querySelector('.tagin'), {
+	duplicate: true
+})
 ```
 
 #### 5. Transform Tags
 Sometimes we need to transform tags.
 Example tags with `toUpperCase()`.
-Using  `data-transform` attribute:
+Using  `data-tagin-transform` attribute:
 ```html
-<input type="text" name="tags" class="form-control tagin" data-transform="input => input.toUpperCase()" value="HTML,CSS">
+<input type="text" name="tags" class="form-control tagin" data-tagin-transform="input => input.toUpperCase()" value="HTML,CSS">
 ```
-Or using module option:
+Or using option:
 ```js
-tagin = new Tagin(document.querySelector(".tagin"), {transform: input => input.toUpperCase()});
+const tagin = new Tagin(document.querySelector('.tagin'), {
+	transform: 'input => input.toUpperCase()'
+})
 ```
 
 #### 6. Force add on enter
-Add `data-enter="true"` to force adding tag when enter key is pressed.
+Add `data-tagin-enter` to force adding tag when enter key is pressed.
 ```html
-<input type="text" name="tags" class="form-control tagin" data-enter="true" value="red,green,blue" data-placeholder="Add a color... (then press comma or enter)">
+<input type="text" name="tags" class="form-control tagin" data-tagin-enter value="red,green,blue" data-placeholder="Add a color... (then press comma or enter)">
 ```
-Or using module option:
+Or using option:
 ```js
-tagin = new Tagin(document.querySelector(".tagin"), {enter: true});
+const tagin = new Tagin(document.querySelector('.tagin'), {
+	enter: true
+})
 ```

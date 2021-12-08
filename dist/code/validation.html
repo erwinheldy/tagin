@@ -1,0 +1,24 @@
+<form class="needs-validation" novalidate>
+	<input type="text" name="tags" class="form-control tagin" required>
+	<div class="valid-feedback">Ok</div>
+	<div class="invalid-feedback">Required</div>
+	<button class="btn btn-primary mt-3" type="submit">Submit</button>
+</form>
+
+<script>
+	new Tagin(document.querySelector('.tagin'))
+
+	// Example starter JavaScript for disabling form submissions if there are invalid fields
+	void (function () {
+		document.querySelectorAll('.needs-validation').forEach(form => {
+			form.addEventListener('submit', event => {
+				if (!form.checkValidity()) {
+					event.preventDefault()
+					event.stopPropagation()
+				}
+
+				form.classList.add('was-validated')
+			})
+		})
+	})()
+</script>

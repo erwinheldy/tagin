@@ -1,0 +1,9 @@
+<!-- Using data-tagin-placeholder attribute: -->
+<input type="text" name="tags" class="form-control tagin" value="red,green,blue" data-tagin-placeholder="Add a color... (then press comma)">
+
+<!-- Or using option: -->
+<script>
+	const tagin = new Tagin(document.querySelector('.tagin'), {
+		placeholder: 'Add a color... (then press comma)'
+	})
+</script>

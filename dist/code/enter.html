@@ -1,0 +1,9 @@
+<!-- Add data-tagin-enter to force adding tag when enter key is pressed. -->
+<input type="text" name="tags" class="form-control tagin" data-tagin-enter value="red,green,blue" data-tagin-placeholder="Add a color... (then press comma or enter)">
+
+<!-- Or using option: -->
+<script>
+	const tagin = new Tagin(document.querySelector('.tagin'), {
+		enter: true
+	})
+</script>

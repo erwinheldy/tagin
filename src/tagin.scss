@@ -1,0 +1,97 @@
+@import '../node_modules/bootstrap/scss/functions';
+@import '../node_modules/bootstrap/scss/variables';
+@import '../node_modules/bootstrap/scss/mixins';
+
+.tagin {
+	display: none;
+}
+
+.tagin-wrapper {
+	cursor    : text;
+	height    : auto;
+	display   : flex;
+	position  : relative;
+	overflow  : hidden;
+	flex-wrap : wrap;
+	padding   : calc(#{$input-padding-y} - 2px) calc(#{$input-padding-x} - 2px);
+
+	// copied from form-control:focus
+	&.focus {
+		color            : $input-focus-color;
+		outline          : 0;
+		border-color     : $input-focus-border-color;
+		background-color : $input-focus-bg;
+
+		@if $enable-shadows {
+			@include box-shadow($input-box-shadow, $input-focus-box-shadow);
+		} @else {
+			box-shadow: $input-focus-box-shadow;
+		}
+	}
+
+	// validation
+	.tagin.is-valid + &,
+	.was-validated .tagin:valid + & {
+		border-color: $form-feedback-valid-color;
+		&.focus {
+			box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($form-feedback-valid-color, $input-btn-focus-color-opacity);
+		}
+	}
+	.tagin.is-invalid + &,
+	.was-validated .tagin:invalid + & {
+		border-color: $form-feedback-invalid-color;
+		&.focus {
+			box-shadow: 0 0 $input-btn-focus-blur $input-focus-width rgba($form-feedback-invalid-color, $input-btn-focus-color-opacity);
+		}
+	}
+}
+
+.tagin-tag {
+	@include border-radius($input-border-radius, 0);
+	color            : #fff;
+	height           : 24px;
+	margin           : 2px;
+	border           : 0;
+	padding          : 0 4px;
+	display          : inline-flex;
+	transition       : transform 0.1s;
+	align-items      : center;
+	font-weight      : 300;
+	background-color : $secondary;
+}
+
+.tagin-tag-remove {
+	width            : 18px;
+	height           : 18px;
+	cursor           : pointer;
+	margin-left      : 2px;
+	background-image : url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%23a0aec0' width='18px' height='18px'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'/%3E%3C/svg%3E");
+
+	&:hover {
+		background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white' width='18px' height='18px'%3E%3Cpath d='M0 0h24v24H0z' fill='none'/%3E%3Cpath d='M12 2C6.47 2 2 6.47 2 12s4.47 10 10 10 10-4.47 10-10S17.53 2 12 2zm5 13.59L15.59 17 12 13.41 8.41 17 7 15.59 10.59 12 7 8.41 8.41 7 12 10.59 15.59 7 17 8.41 13.41 12 17 15.59z'/%3E%3C/svg%3E");
+	}
+}
+
+.tagin-input {
+	color        : $input-color;
+	height       : 28px;
+	outline      : 0;
+	padding      : 0 2px 0 0;
+	margin-left  : 2px;
+	border-color : transparent;
+	border-width : 1px 0;
+
+	&:not(.tagin-input-hidden) {
+		width: 4px;
+		min-width: 4px;
+	}
+}
+
+.tagin-input-hidden {
+	top         : 0;
+	left        : -9999px;
+	position    : absolute;
+	overflow    : hidden;
+	visibility  : hidden;
+	white-space : nowrap;
+}

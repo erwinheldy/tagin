@@ -1,41 +1,51 @@
 {
-  "name": "tagin",
-  "version": "1.4.0",
-  "description": "Simple tag input for Bootstrap",
-  "keywords": [
-    "tag",
-    "bootstrap",
-    "bootstrap tag",
-    "tag input"
-  ],
-  "main": "dist/js/tagin.js",
-  "repository": "https://github.com/erwinheldy/tagin.git",
-  "author": "Erwin Heldy G <erwin.developer@gmail.com>",
-  "license": "MIT",
+	"name": "tagin",
+	"version": "2.0.0",
+	"description": "Simple tag input for Bootstrap",
+	"source": "src/tagin.ts",
+	"main": "dist/tagin.js",
+	"module": "dist/tagin.module.js",
+	"types": "dist/tagin.d.ts",
+	"repository": "https://github.com/erwinheldy/tagin.git",
+	"author": "Erwin Heldy G",
+	"license": "MIT",
+	"homepage": "https://tagin.netlify.app/",
+	"keywords": [
+		"tag",
+		"bootstrap",
+		"bootstrap tag",
+		"tag input"
+	],
+	"files": [
+		"dist"
+	],
 	"scripts": {
-		"dev": "node builder.js --dev",
-		"build": "node builder.js --build",
-    "preview": "tinyliveserver --root=dist"
+		"clean": "rimraf dist/tagin*",
+		"build": "npm run clean --silent && run-p build:css build:js",
+		"build:css": "run-s build:css:sass build:css:min",
+		"build:css:sass": "sass --source-map --embed-sources src/tagin.scss:dist/tagin.css",
+		"build:css:min": "cssmin-recursive dist",
+		"build:js": "run-s build:js:ts build:js:min build:js:min:module",
+		"build:js:ts": "rollup -c --silent",
+		"build:js:min": "uglifyjs dist/tagin.js -c -m --mangle-props reserved -o dist/tagin.min.js",
+		"build:js:min:module": "uglifyjs dist/tagin.module.js -c -m --mangle-props reserved -o dist/tagin.module.min.js",
+		"build:js:dts": "",
+		"dev": "run-p dev:css dev:js serve",
+		"dev:css": "sass --source-map --embed-sources src/tagin.scss:dist/tagin.css -w",
+		"dev:js": "rollup -c -w",
+		"serve": "tinyliveserver --root=dist --watch=dist --quiet"
 	},
 	"devDependencies": {
-    "autoprefixer": "10.4.0",
-    "bootstrap": "5.1.3",
-		"chokidar": "3.5.2",
+		"@rollup/plugin-typescript": "8.3.0",
+		"bootstrap": "5.1.3",
 		"cssmin-recursive": "1.0.0",
-		"jsmin-recursive": "1.0.0",
-		"postcss": "8.3.11",
-		"postcss-cli": "9.0.2",
-		"tinyliveserver": "1.0.1"
-	},
-	"browserslist": [
-		">= 0.5%",
-		"last 2 major versions",
-		"not dead",
-		"Chrome >= 60",
-		"Firefox >= 60",
-		"Firefox ESR",
-		"iOS >= 12",
-		"Safari >= 12",
-		"not Explorer <= 11"
-	]
+		"npm-run-all": "4.1.5",
+		"rimraf": "3.0.2",
+		"rollup": "2.60.2",
+		"sass": "1.44.0",
+		"tinyliveserver": "1.0.1",
+		"tslib": "2.3.1",
+		"typescript": "4.5.2",
+		"uglify-js": "3.14.4"
+	}
 }

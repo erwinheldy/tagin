@@ -1,0 +1,9 @@
+<!-- Using data-tagin-separator attribute: -->
+<input type="text" name="tags" class="form-control tagin" data-tagin-separator=" " value="red green blue">
+
+<!-- Or using option: -->
+<script>
+	const tagin = new Tagin(document.querySelector('.tagin'), {
+		separator: ' '
+	})
+</script>

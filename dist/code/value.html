@@ -1,0 +1,11 @@
+<input type="text" name="tags" class="form-control tagin" value="red,green,blue">
+<button class="btn btn-outline-secondary mt-4 btn-sm" id="get" type="button">Get the value</button>
+
+<script>
+	const tagin = new Tagin(document.querySelector('.tagin'))
+
+	document.getElementById('get').addEventListener('click', function () {
+		console.log(tagin.getTag()) // red,green,blue
+		console.log(tagin.getTags()) // ["red","green","blue"]
+	})
+</script>

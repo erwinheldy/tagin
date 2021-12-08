@@ -1,0 +1,9 @@
+<!-- Using data-tagin-transform attribute: -->
+<input type="text" name="tags" class="form-control tagin" data-tagin-transform="input => input.toUpperCase()" value="HTML,CSS">
+
+<!-- Or using option: -->
+<script>
+	const tagin = new Tagin(document.querySelector('.tagin'), {
+		transform: 'input => input.toUpperCase()'
+	})
+</script>

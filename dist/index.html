@@ -4,18 +4,25 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <link rel="stylesheet" href="https://unpkg.com/bootstrap@5.1.3/dist/css/bootstrap.min.css">
-  <link rel="stylesheet" href="css/tagin.css">
+	<link rel="stylesheet" href="https://unpkg.com/prismjs/themes/prism.css">
+  <link rel="stylesheet" href="tagin.css">
   <title>Tagin</title>
 </head>
-<body class="bg-light">
-  <div class="container my-5" style="max-width: calc(720px + 1rem)">
-    <div class="card card-body border-0 shadow p-4">
+<body class="bg-lights position-relative" data-bs-spy="scroll" data-bs-target="#list-example">
+	<div id="list-example" class="list-group list-group-flush position-fixed left-0 top-0 m-4 d-none d-xl-flex">
+		<a class="list-group-item list-group-item-action" href="#features">Features</a>
+		<a class="list-group-item list-group-item-action" href="#installation">Installation</a>
+		<a class="list-group-item list-group-item-action" href="#usage">Usage/Examples</a>
+		<a class="list-group-item list-group-item-action" href="#options">Options</a>
+		<a class="list-group-item list-group-item-action" href="#methods">Methods</a>
+	</div>
+  <div class="container my-5 position-relative" id="container" style="max-width: calc(720px + 1rem)">
       <div class="d-flex align-items-center gap-1">
         <svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" fill="none" viewBox="0 0 24 24" stroke="#0d6efd">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 7h.01M7 3h5c.512 0 1.024.195 1.414.586l7 7a2 2 0 010 2.828l-7 7a2 2 0 01-2.828 0l-7-7A1.994 1.994 0 013 12V7a4 4 0 014-4z" />
         </svg>
         <h1>Tagin</h1>
-        <small>v1.4.0</small>
+        <small>v2.0.0</small>
       </div>
       <p class="text-secondary">Simple tag input for Bootstrap</p>
       <p class="mb-5">
@@ -24,80 +31,427 @@
           Github
         </a>
       </p>
-      <div style="max-width: 720px" class="d-flex flex-column gap-5">
+
+			<h3 id="features">Features</h3>
+			<ul class="text-secondary">
+				<li>Custom separators</li>
+				<li>Enable/disable duplicates</li>
+				<li>Custom transform</li>
+				<li>Supports Bootstrap validation style</li>
+				<li>Fast</li>
+				<li>Small</li>
+				<li>No dependencies</li>
+			</ul>
+
+			<h3 class="mt-5" id="installation">Installation</h3>
+			<p class="text-secondary">Install tagin with npm:</p>
+			<pre><code class="language-bash">npm install tagin</code></pre>
+			<p class="text-secondary mt-3">Install from cdn:</p>
+			<pre data-src="code/cdn.html"></pre>
+
+			<h3 class="mt-5" id="usage">Usage/Examples</h3>
+			<p class="text-secondary">Place <code>css</code> between <code>&lt;head&gt;&lt;/head&gt;</code> tags:</p>
+			<pre><code class="language-html">&lt;head&gt;
+	&lt;link rel="stylesheet" href="https://unpkg.com/tagin@2.0.0/dist/tagin.min.css"&gt;
+&lt;/head&gt;</code></pre>
+			<p class="text-secondary mt-5">Place <code>js</code> before <code>&lt;/body&gt;</code> tag:</p>
+			<pre><code class="language-html">&lt;body&gt;
+	...
+	&lt;script src="https://unpkg.com/tagin@2.0.0/dist/tagin.min.js"&gt;&lt;/script&gt;
+&lt;/body&gt;</code></pre>
+			<p class="mt-5">* You can also use tagin as javascript module:</p>
+			<pre><code class="language-html">&lt;script src="yourscript.js" type="module"&gt;&lt;/script&gt;</code></pre>
+			<p class="mt-4 text-muted">In <code>yourscript.js</code> file, import Tagin (Change location according to your path):</p>
+			<pre><code class="language-javascript">import Tagin from './path/to/tagin.module.js'</code></pre>
+			<p class="mt-5">Or you can use it directly in the html script as a module:</p>
+			<pre><code class="language-html">&lt;script type="module"&gt;
+	import Tagin from './path/to/tagin.module.js'
+&lt;/script&gt;
+			</code></pre>
+
+			<h4 class="mt-5">Examples:</h4>
+
+      <div style="max-width: 720px" class="d-flex flex-column gap-5 mt-5">
         <div>
-          <h5>Basic</h5>
-          <p class="text-muted">
-            Enter a comma-separated list of tags.
-          </p>
-          <input type="text" name="tags" class="form-control tagin" value="red,green,blue">
+          <h5>1. Basic Usage (No <code>data-options</code> attribute needed):</h5>
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#preview-basic" type="button" role="tab" aria-controls="preview-basic" aria-selected="true">Preview</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#code-basic" type="button" role="tab" aria-controls="code-basic" aria-selected="false">Code</button>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body p-4">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane show active" id="preview-basic" role="tabpanel">
+									<input type="text" name="tags" class="form-control tagin" value="red,green,blue">
+								</div>
+								<div class="tab-pane" id="code-basic" role="tabpanel">
+									<pre data-src="code/basic.html"></pre>
+								</div>
+							</div>
+						</div>
+					</div>
         </div>
 
         <div>
-          <h5>Placeholder</h5>
-          <p class="text-muted">
-            Set placeholder using <code>data-placeholder</code> attribute.<br>
-          </p>
-          <input type="text" name="tags" class="form-control tagin" value="red,green,blue" data-placeholder="Add a color... (then press comma)">
+          <h5>2. Using Placeholder</h5>
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#preview-placeholder" type="button" role="tab" aria-controls="preview-placeholder" aria-selected="true">Preview</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#code-placeholder" type="button" role="tab" aria-controls="code-placeholder" aria-selected="false">Code</button>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body p-4">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane show active" id="preview-placeholder" role="tabpanel">
+									<input type="text" name="tags" class="form-control tagin" value="red,green,blue" data-tagin-placeholder="Add a color... (then press comma)">
+								</div>
+								<div class="tab-pane" id="code-placeholder" role="tabpanel">
+									<pre data-src="code/placeholder.html"></pre>
+								</div>
+							</div>
+						</div>
+					</div>
         </div>
 
         <div>
-          <h5>Custom Separator</h5>
-          <p class="text-muted">
-            Set separator using <code>data-separator</code> attribute.<br>
-            Example tags using 'space' separator.
-          </p>
-          <input type="text" name="tags" class="form-control tagin" data-separator=" " value="red green blue">
+          <h5>3. Using Custom Separator</h5>
+					<p class="text-muted">
+						Example tags with 'space' separator.
+					</p>
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#preview-separator" type="button" role="tab" aria-controls="preview-separator" aria-selected="true">Preview</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#code-separator" type="button" role="tab" aria-controls="code-separator" aria-selected="false">Code</button>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body p-4">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane show active" id="preview-separator" role="tabpanel">
+									<input type="text" name="tags" class="form-control tagin" data-tagin-separator=" " value="red green blue">
+								</div>
+								<div class="tab-pane" id="code-separator" role="tabpanel">
+									<pre data-src="code/separator.html"></pre>
+								</div>
+							</div>
+						</div>
+					</div>
         </div>
 
         <div>
-          <h5>Duplicates</h5>
-          <p class="text-muted">
-            Add <code>data-duplicate="true"</code> to remove duplicates validation.
-          </p>
-          <input type="text" name="tags" class="form-control tagin" data-duplicate="true" value="html,html,css,css,js,js">
+          <h5>4. Allow Duplicates</h5>
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#preview-duplicates" type="button" role="tab" aria-controls="preview-duplicates" aria-selected="true">Preview</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#code-duplicates" type="button" role="tab" aria-controls="code-duplicates" aria-selected="false">Code</button>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body p-4">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane show active" id="preview-duplicates" role="tabpanel">
+									<input type="text" name="tags" class="form-control tagin" data-tagin-duplicate value="html,html,css,css,js,js">
+								</div>
+								<div class="tab-pane" id="code-duplicates" role="tabpanel">
+									<pre data-src="code/duplicates.html"></pre>
+								</div>
+							</div>
+						</div>
+					</div>
         </div>
 
         <div>
-          <h5>Transform Tags</h5>
-          <p class="text-muted">
-            Sometimes we need to transform tags.<br>
-            Example transform using <code>toUpperCase</code>.
-          </p>
-          <input type="text" name="tags" class="form-control tagin" data-transform="input => input.toUpperCase()" value="HTML,CSS">
+          <h5>5. Transform Tags</h5>
+					<p class="text-muted">
+						Sometimes we need to transform tags. Example tags with <code>toUpperCase()</code>.
+					</p>
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#preview-transform" type="button" role="tab" aria-controls="preview-transform" aria-selected="true">Preview</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#code-transform" type="button" role="tab" aria-controls="code-transform" aria-selected="false">Code</button>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body p-4">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane show active" id="preview-transform" role="tabpanel">
+									<input type="text" name="tags" class="form-control tagin" data-tagin-transform="input => input.toUpperCase()" value="HTML,CSS">
+								</div>
+								<div class="tab-pane" id="code-transform" role="tabpanel">
+									<pre data-src="code/transform.html"></pre>
+								</div>
+							</div>
+						</div>
+					</div>
         </div>
 
         <div>
-          <h5>Force add on enter</h5>
-          <p class="text-muted">
-            Add <code>data-enter="true"</code> to force add tag when enter key is pressed.
-          </p>
-          <div class="vstack gap-2">
-            <input type="text" name="tags" class="form-control tagin" data-enter="true" value="red,green,blue" data-placeholder="Add a color... (then press comma or enter)">
-            <input type="text" name="tags" class="form-control tagin" data-enter="true" value="red green blue" data-placeholder="Add a color... (then press space or enter)" data-separator=" ">
-          </div>
+          <h5>6. Force Add on Enter</h5>
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#preview-enter" type="button" role="tab" aria-controls="preview-enter" aria-selected="true">Preview</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#code-enter" type="button" role="tab" aria-controls="code-enter" aria-selected="false">Code</button>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body p-4">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane show active" id="preview-enter" role="tabpanel">
+									<div class="vstack gap-2">
+										<input type="text" name="tags" class="form-control tagin" data-tagin-enter value="red,green,blue" data-tagin-placeholder="Add a color... (then press comma or enter)">
+										<input type="text" name="tags" class="form-control tagin" data-tagin-enter value="red green blue" data-tagin-placeholder="Add a color... (then press space or enter)" data-tagin-separator=" ">
+									</div>
+								</div>
+								<div class="tab-pane" id="code-enter" role="tabpanel">
+									<pre data-src="code/enter.html"></pre>
+								</div>
+							</div>
+						</div>
+					</div>
         </div>
 
         <div>
-          <h5>Validation</h5>
-          <p class="text-muted">
-            Supports bootstrap custom validation styles.
-          </p>
-          <form class="needs-validation" novalidate>
-            <input type="text" name="tags" class="form-control tagin" required>
-            <div class="invalid-feedback">Example invalid feedback text</div>
-            <button class="btn btn-primary mt-3" type="submit">Submit</button>
-          </form>
+          <h5>7. Add Tags Programmatically</h5>
+					<p class="text-muted">
+						Tagin provides <code>addTag</code> method to add tags programmatically.
+					</p>
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#preview-add" type="button" role="tab" aria-controls="preview-add" aria-selected="true">Preview</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#code-add" type="button" role="tab" aria-controls="code-add" aria-selected="false">Code</button>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body p-4">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane show active" id="preview-add" role="tabpanel">
+									<input type="text" name="tags" class="form-control tagin" id="test-add" value="red,green,blue">
+									<div class="d-flex flex-wrap gap-2">
+										<button class="btn btn-secondary mt-4 btn-sm" id="add1" type="button">Add yellow</button>
+										<button class="btn btn-secondary mt-4 btn-sm" id="add2" type="button">Add cyan & black</button>
+									</div>
+								</div>
+								<div class="tab-pane" id="code-add" role="tabpanel">
+									<pre data-src="code/add.html"></pre>
+								</div>
+							</div>
+						</div>
+					</div>
         </div>
+
+        <div>
+          <h5>8. Get the value</h5>
+					<p class="text-muted">
+						To get the value, Tagin provides the <code>getTag</code> method to get the string value with its separator, and the <code>getTags</code> method to get the value as an array.
+					</p>
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#preview-value" type="button" role="tab" aria-controls="preview-value" aria-selected="true">Preview</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#code-value" type="button" role="tab" aria-controls="code-value" aria-selected="false">Code</button>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body p-4">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane show active" id="preview-value" role="tabpanel">
+									<input type="text" name="tags" class="form-control tagin" id="test-value" value="red,green,blue">
+									<button class="btn btn-outline-secondary mt-4 btn-sm" id="get" type="button">Get the value</button>
+									<pre class="mt-4 bg-light p-4 rounded-3" id="value-container"></pre>
+								</div>
+								<div class="tab-pane" id="code-value" role="tabpanel">
+									<pre data-src="code/value.html"></pre>
+								</div>
+							</div>
+						</div>
+					</div>
+        </div>
+
+        <div>
+          <h5>9. Validation</h5>
+					<div class="card">
+						<div class="card-header">
+							<ul class="nav nav-tabs card-header-tabs" id="myTab" role="tablist">
+								<li class="nav-item" role="presentation">
+									<button class="nav-link active" data-bs-toggle="tab" data-bs-target="#preview-validation" type="button" role="tab" aria-controls="preview-validation" aria-selected="true">Preview</button>
+								</li>
+								<li class="nav-item" role="presentation">
+									<button class="nav-link" data-bs-toggle="tab" data-bs-target="#code-validation" type="button" role="tab" aria-controls="code-validation" aria-selected="false">Code</button>
+								</li>
+							</ul>
+						</div>
+						<div class="card-body p-4">
+							<div class="tab-content" id="myTabContent">
+								<div class="tab-pane show active" id="preview-validation" role="tabpanel">
+									<form class="needs-validation" novalidate>
+										<input type="text" name="tags" class="form-control tagin" required>
+										<div class="valid-feedback">Ok</div>
+										<div class="invalid-feedback">Required</div>
+										<button class="btn btn-primary mt-3" type="submit">Submit</button>
+									</form>
+								</div>
+								<div class="tab-pane" id="code-validation" role="tabpanel">
+									<pre data-src="code/validation.html"></pre>
+								</div>
+							</div>
+						</div>
+					</div>
+        </div>
+
       </div>
-    </div>
-  </div>
 
-  <script src="js/tagin.js"></script>
+			<h3 class="mt-5" id="options">Options</h3>
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Type</th>
+							<th>Default</th>
+							<th>Description</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>separator</code></td>
+							<td>string</td>
+							<td><code>,</code></td>
+							<td>Separator between tags</td>
+						</tr>
+						<tr>
+							<td><code>placeholder</code></td>
+							<td>string</td>
+							<td></td>
+							<td>Short hint in the input field before the user enters a value</td>
+						</tr>
+						<tr>
+							<td><code>duplicate</code></td>
+							<td>boolean</td>
+							<td><code>false</code></td>
+							<td>Allow duplicates</td>
+						</tr>
+						<tr>
+							<td><code>transform</code></td>
+							<td>string</td>
+							<td><code>input => input</code></td>
+							<td>Function to change value. The function must be an arrow function</td>
+						</tr>
+						<tr>
+							<td><code>enter</code></td>
+							<td>boolean</td>
+							<td><code>false</code></td>
+							<td>Force adding tag when enter key is pressed</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+			<h3 class="mt-5" id="methods">Methods</h3>
+			<div class="table-responsive">
+				<table class="table table-bordered">
+					<thead>
+						<tr>
+							<th>Name</th>
+							<th>Params</th>
+							<th>Returns</th>
+							<th>Example</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td><code>addTag</code></td>
+							<td nowrap><code>string | array</code></td>
+							<td><code>void</code></td>
+							<td>
+								<pre><code class="language-javascript">tagin.addTag('yellow')
+tagin.addTag('black,white')
+tagin.addTag(['black', 'white'])</code></pre>
+							</td>
+						</tr>
+						<tr>
+							<td><code>getTag</code></td>
+							<td><code>null</code></td>
+							<td><code>string</code></td>
+							<td>
+								<pre><code class="language-javascript">tagin.getTag()</code></pre>
+							</td>
+						</tr>
+						<tr>
+							<td><code>getTags</code></td>
+							<td>null</td>
+							<td><code>array</code></td>
+							<td>
+								<pre><code class="language-javascript">tagin.getTags()</code></pre>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+
+  </div>
+	<script src="https://unpkg.com/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="https://unpkg.com/prismjs/prism.js"></script>
+	<script src="https://unpkg.com/prismjs/plugins/file-highlight/prism-file-highlight.min.js"></script>
+	<script src="./tagin.js"></script>
   <script>
-    for (const el of document.querySelectorAll('.tagin')) {
-      tagin(el)
-    }
+
+		document.querySelectorAll('.tagin:not([id])').forEach((el) => {
+			if (el instanceof HTMLInputElement) {
+				const tagin = new Tagin(el)
+			}
+		})
+
+		const testAdd = new Tagin(document.getElementById('test-add'))
+		document.getElementById('add1').addEventListener('click', function () {
+			testAdd.addTag('yellow')
+			this.remove()
+		})
+		document.getElementById('add2').addEventListener('click', function () {
+			testAdd.addTag(['cyan', 'black'])
+			this.remove()
+		})
+
+		const testValue = new Tagin(document.getElementById('test-value'))
+		document.getElementById('get').addEventListener('click', function () {
+			const value = testValue.getTag()
+			const values = JSON.stringify(testValue.getTags())
+			document.getElementById('value-container').innerHTML = `${value}<br>${values}`
+		})
+
 
     // Example starter JavaScript for disabling form submissions if there are invalid fields
     void (function() {
@@ -112,6 +466,7 @@
         })
       })
     })()
+
   </script>
 </body>
 </html>
