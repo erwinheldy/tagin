@@ -1,6 +1,6 @@
 {
 	"name": "tagin",
-	"version": "2.0.0",
+	"version": "2.0.1",
 	"description": "Simple tag input for Bootstrap",
 	"source": "src/tagin.ts",
 	"main": "dist/tagin.js",
@@ -27,13 +27,12 @@
 		"build:css:min": "cssmin-recursive dist",
 		"build:js": "run-s build:js:ts build:js:min build:js:min:module",
 		"build:js:ts": "rollup -c --silent",
-		"build:js:min": "uglifyjs dist/tagin.js -c -m --mangle-props reserved -o dist/tagin.min.js",
-		"build:js:min:module": "uglifyjs dist/tagin.module.js -c -m --mangle-props reserved -o dist/tagin.module.min.js",
+		"build:js:min": "uglifyjs dist/tagin.js -c -m --mangle-props reserved=[Tagin] -o dist/tagin.min.js",
+		"build:js:min:module": "uglifyjs dist/tagin.module.js -c -m --mangle-props -o dist/tagin.module.min.js",
 		"build:js:dts": "",
-		"dev": "run-p dev:css dev:js serve",
+		"dev": "run-p dev:css dev:js",
 		"dev:css": "sass --source-map --embed-sources src/tagin.scss:dist/tagin.css -w",
-		"dev:js": "rollup -c -w",
-		"serve": "tinyliveserver --root=dist --watch=dist --quiet"
+		"dev:js": "rollup -c -w"
 	},
 	"devDependencies": {
 		"@rollup/plugin-typescript": "8.3.0",
@@ -41,11 +40,10 @@
 		"cssmin-recursive": "1.0.0",
 		"npm-run-all": "4.1.5",
 		"rimraf": "3.0.2",
-		"rollup": "2.60.2",
-		"sass": "1.44.0",
-		"tinyliveserver": "1.0.1",
+		"rollup": "2.61.1",
+		"sass": "1.45.0",
 		"tslib": "2.3.1",
-		"typescript": "4.5.2",
-		"uglify-js": "3.14.4"
+		"typescript": "4.5.4",
+		"uglify-js": "3.14.5"
 	}
 }
