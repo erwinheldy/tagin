@@ -1,5 +1,5 @@
 /*!
-* Tagin v2.0.1 (https://tagin.netlify.app/)
+* Tagin v2.0.2 (https://tagin.netlify.app/)
 * Copyright 2020-2021 Erwin Heldy G
 * Licensed under MIT (https://github.com/erwinheldy/tagin/blob/master/LICENSE)
 */

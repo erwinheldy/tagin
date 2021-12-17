@@ -24,8 +24,8 @@ npm install tagin
 
 Install from cdn:
 ```html
-<link rel="stylesheet" href="https://unpkg.com/tagin@2.0.1/dist/tagin.min.css">
-<script src="https://unpkg.com/tagin@2.0.1/dist/tagin.min.js"></script>
+<link rel="stylesheet" href="https://unpkg.com/tagin@2.0.2/dist/tagin.min.css">
+<script src="https://unpkg.com/tagin@2.0.2/dist/tagin.min.js"></script>
 ```
 
 ## Usage/Examples
@@ -33,7 +33,7 @@ Install from cdn:
 Place `css` between `<head></head>` tags:
 ```html
 <head>
-    <link rel="stylesheet" href="https://unpkg.com/tagin@2.0.1/dist/tagin.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/tagin@2.0.2/dist/tagin.min.css">
 </head>
 ```
 
@@ -41,7 +41,7 @@ Place `js` before `</body>` tag:
 ```html
 <body>
     ...
-    <script src="https://unpkg.com/tagin@2.0.1/dist/tagin.min.js"></script>
+    <script src="https://unpkg.com/tagin@2.0.2/dist/tagin.min.js"></script>
 </body>
 ```
 * You can also use tagin as javascript module:
