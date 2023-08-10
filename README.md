@@ -1,3 +1,5 @@
+🛑 **Deprecation**: This package is no longer receiving updates or support. We recommend that you transition to the [use-bootstrap-tag](https://use-bootstrap-tag.js.org), which provides similar functionality and is actively maintained.
+
 # Tagin
 
 Simple tag input for Bootstrap. Supports bootstrap v4 and v5.

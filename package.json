@@ -1,6 +1,7 @@
 {
 	"name": "tagin",
-	"version": "2.0.2",
+	"version": "2.0.3",
+	"deprecated": "This package has been deprecated. Please use 'use-bootstrap-tag' instead.",
 	"description": "Simple tag input for Bootstrap",
 	"source": "src/tagin.ts",
 	"main": "dist/tagin.js",
